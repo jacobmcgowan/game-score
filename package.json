@@ -10,14 +10,18 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:extension.helloWorld"
+		"*"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "extension.helloWorld",
-				"title": "Hello World"
+				"command": "gameScore.show",
+				"title": "Game Score: Show"
+			},
+			{
+				"command": "gameScore.hide",
+				"title": "Game Score: Hide"
 			}
 		]
 	},
