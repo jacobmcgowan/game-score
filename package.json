@@ -42,5 +42,13 @@
 		"typescript": "^3.3.1",
 		"tslint": "^5.12.1",
 		"vscode-test": "^1.0.2"
+	},
+	"dependencies": {
+		"@types/cheerio": "^0.22.13",
+		"@types/request": "^2.48.2",
+		"@types/request-promise": "^4.1.44",
+		"cheerio": "^1.0.0-rc.3",
+		"request": "^2.88.0",
+		"request-promise": "^4.2.4"
 	}
 }

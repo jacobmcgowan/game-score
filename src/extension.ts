@@ -1,7 +1,7 @@
 import { commands, window, ExtensionContext, StatusBarItem } from 'vscode';
 import { GameScore } from './GameScore';
 
-let gameScore = new GameScore();
+let gameScore = new GameScore('cleveland-browns');
 
 export function activate(context: ExtensionContext) {
 
