@@ -1,19 +1,20 @@
 import { window, StatusBarItem, StatusBarAlignment } from "vscode";
 import * as requestPromise from 'request-promise';
 import * as cheerio from 'cheerio';
-import { EMLINK } from "constants";
 
 export class GameScore {
   private _status: StatusBarItem;
   private _running: boolean;
   private _url: string;
   private _following: string;
+  private _frequency: number;
 
-  public constructor(following: string) {
+  public constructor(following: string, frequency: number) {
     this._status = window.createStatusBarItem(StatusBarAlignment.Right);
     this._running = false;
     this._url = 'https://www.msn.com/en-us/sports/nfl/scores';
     this._following = following;
+    this._frequency = frequency;
   }
 
   public show() {
@@ -29,11 +30,10 @@ export class GameScore {
 
   private _update() {
     if (this._running) {
-      let self = this;
-
       requestPromise.get(this._url)
         .then((html) => {
           this._status.text = this._parseScore(html, this._following);
+          setTimeout(() => this._update(), this._frequency);
         })
         .catch((err) => {
           this._status.text = 'Error getting score';
