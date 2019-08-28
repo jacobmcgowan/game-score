@@ -23,7 +23,23 @@
 				"command": "gameScore.hide",
 				"title": "Game Score: Hide"
 			}
-		]
+		],
+		"configuration": {
+			"type": "object",
+			"Title": "Game Score Configuration",
+			"properties": {
+				"gameScore.following": {
+					"type": "string",
+					"default": "cleveland-browns",
+					"description": "The team that you want to follow"
+				},
+				"gameScore.frequency": {
+					"type": "number",
+					"default": 60000,
+					"description": "Refresh frequency in milliseconds"
+				}
+			}
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
