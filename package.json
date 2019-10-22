@@ -2,7 +2,7 @@
 	"name": "game-score",
 	"displayName": "Game Score",
 	"description": "Displays the score of the current or latest game of your favorite American Football team in the status bar.",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"engines": {
 		"vscode": "^1.37.0"
 	},
