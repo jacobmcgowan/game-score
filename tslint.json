@@ -9,7 +9,10 @@
 			true,
 			"always"
 		],
-		"triple-equals": true
+    "triple-equals": true,
+    "prefer-const": true,
+    "no-var-keyword": true,
+    "completed-docs": true
 	},
 	"defaultSeverity": "warning"
 }
