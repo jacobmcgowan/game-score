@@ -1,6 +1,5 @@
 import { commands, ExtensionContext } from 'vscode';
-import { GameScore } from './GameScore';
-import { Configuration } from './Configuration';
+import { Configuration, GameScore } from './GameScore';
 
 const gameScore = new GameScore(new Configuration());
 

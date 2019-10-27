@@ -2,11 +2,13 @@ import { window, StatusBarItem, StatusBarAlignment } from "vscode";
 import * as requestPromise from 'request-promise';
 import * as cheerio from 'cheerio';
 import { Configuration } from "./Configuration";
+import { ScoreUrl } from "./ScoreUrl";
+import { IGameScore } from "./IGameScore";
 
 /**
  * Defines the game-score extension.
  */
-export class GameScore {
+export class GameScore implements IGameScore {
   /**
    * The status output.
    */
@@ -16,11 +18,6 @@ export class GameScore {
    * Whether the extension is running or not.
    */
   private _running: boolean;
-
-  /**
-   * The URL to scrape for game scores.
-   */
-  private _url: string;
 
   /**
    * The user configuration.
@@ -34,7 +31,6 @@ export class GameScore {
   public constructor(config: Configuration) {
     this._status = window.createStatusBarItem(StatusBarAlignment.Right);
     this._running = false;
-    this._url = 'https://www.msn.com/en-us/sports/nfl/scores';
     this._config = config;
   }
 
@@ -60,7 +56,7 @@ export class GameScore {
    */
   private _update() {
     if (this._running) {
-      requestPromise.get(this._url)
+      requestPromise.get(new ScoreUrl(this._config.league).toString())
         .then((html) => {
           this._status.text = this._parseScore(html, this._config.following);
           setTimeout(() => this._update(), this._config.frequency);
@@ -80,7 +76,9 @@ export class GameScore {
     try {
       let score = 'Pending score update';
 
-      const $ = cheerio.load(html);
+      const $ = cheerio.load(html, {
+        lowerCaseTags: true
+      });
       const gameRow = $(`tbody.rowlink[data-link*=${following}]`).first();
 
       if (gameRow && gameRow.length) {
