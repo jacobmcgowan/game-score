@@ -2,7 +2,7 @@
 	"name": "game-score",
 	"displayName": "Game Score",
 	"description": "Displays the score of the current or latest game of your favorite team or player in the status bar.",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"engines": {
 		"vscode": "^1.37.0"
 	},
@@ -47,12 +47,12 @@
 					"type": "number",
 					"default": 60000,
 					"description": "Refresh frequency in milliseconds"
-        },
-        "gameScore.league": {
-          "type": "string",
-          "default": "nfl",
-          "description": "The league that you want to follow"
-        }
+				},
+				"gameScore.league": {
+					"type": "string",
+					"default": "nfl",
+					"description": "The league that you want to follow"
+				}
 			}
 		}
 	},
