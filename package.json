@@ -1,7 +1,7 @@
 {
 	"name": "game-score",
 	"displayName": "Game Score",
-	"description": "Displays the score of the current or latest game of your favorite American Football team in the status bar.",
+	"description": "Displays the score of the current or latest game of your favorite team or player in the status bar.",
 	"version": "0.1.0",
 	"engines": {
 		"vscode": "^1.37.0"
@@ -41,13 +41,18 @@
 				"gameScore.following": {
 					"type": "string",
 					"default": "cleveland-browns",
-					"description": "The team that you want to follow"
+					"description": "The team or player that you want to follow"
 				},
 				"gameScore.frequency": {
 					"type": "number",
 					"default": 60000,
 					"description": "Refresh frequency in milliseconds"
-				}
+        },
+        "gameScore.league": {
+          "type": "string",
+          "default": "nfl",
+          "description": "The league that you want to follow"
+        }
 			}
 		}
 	},
